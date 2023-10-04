@@ -1,0 +1,14 @@
+on: [push]
+
+name: Atlas CLI Action Sample
+
+jobs:
+  use-atlas-cli:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Setup AtlasCLI
+        uses: mongodb/atlas-github-action@main
+      - name: Use AtlasCLI
+        shell: bash
+        run: atlas --version # Print Atlas CLI Version
