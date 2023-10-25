@@ -2,9 +2,6 @@ on: [push]
 
 name: Atlas CLI Action Sample
 
-env:
-  TEST_ENV_VAR: test # default organisation ID
-
 jobs:
   use-atlas-cli:
     runs-on: ubuntu-latest
@@ -15,8 +12,14 @@ jobs:
       - name: Print env var
         shell: bash
         run: |
-          echo "${{ MONGODB_ATLAS_HOSTNAME }}"
-          echo "${{ TEST_ENV_VAR }}"
+          # define variables      
+          tests=16
+
+          # set them as GitHub ENV variables
+          echo "Tests=$tests" >> $GITHUB_ENV
+
+          # retrieve these GitHub ENV variables
+          echo "${{ env.Tests }} on CI"
       - name: Use AtlasCLI
         shell: bash
         run: atlas --version # Print Atlas CLI Version
