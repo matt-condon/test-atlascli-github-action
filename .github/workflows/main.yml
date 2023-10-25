@@ -2,13 +2,21 @@ on: [push]
 
 name: Atlas CLI Action Sample
 
+env:
+  TEST_ENV_VAR: test # default organisation ID
+
 jobs:
   use-atlas-cli:
     runs-on: ubuntu-latest
     
     steps:
       - name: Setup AtlasCLI
-        uses: mongodb/atlas-github-action@main
+        uses: mongodb/atlas-github-action@CLOUDP-202471
+      - name: Print env var
+        shell: bash
+        run: |
+          echo "${{ MONGODB_ATLAS_HOSTNAME }}"
+          echo "${{ TEST_ENV_VAR }}"
       - name: Use AtlasCLI
         shell: bash
         run: atlas --version # Print Atlas CLI Version
