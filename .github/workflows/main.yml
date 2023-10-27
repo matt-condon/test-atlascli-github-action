@@ -13,17 +13,19 @@ jobs:
         shell: bash
         run: |
           # define variables      
-          TEST_VAR=$(TEST_VAR="test" /usr/bin/atlas)
+          TEST_VAR=$(TEST_VAR="test" /usr/bin)
           echo $TEST_VAR
 
-          cd /usr/bin/atlas
+          cd /usr/bin
           echo $MONGODB_ATLAS_HOSTNAME
 
           # set them as GitHub ENV variables
           echo "MONGODB_ATLAS_HOSTNAME=$MONGODB_ATLAS_HOSTNAME" >> $GITHUB_ENV
+          echo "TEST_VAR=$TEST_VAR" >> $GITHUB_ENV
 
           # retrieve these GitHub ENV variables
           echo "${{ env.MONGODB_ATLAS_HOSTNAME }} on CI"
+          echo "${{ env.TEST_VAR }} on CI"
       - name: Use AtlasCLI
         shell: bash
         run: atlas --version # Print Atlas CLI Version
