@@ -8,24 +8,7 @@ jobs:
     
     steps:
       - name: Setup AtlasCLI
-        uses: mongodb/atlas-github-action@CLOUDP-202471
-      - name: Print env var
-        shell: bash
-        run: |
-          # define variables      
-          TEST_VAR=$(TEST_VAR="test" /usr/bin)
-          echo $TEST_VAR
-
-          cd /usr/bin
-          echo $MONGODB_ATLAS_HOSTNAME
-
-          # set them as GitHub ENV variables
-          echo "MONGODB_ATLAS_HOSTNAME=$MONGODB_ATLAS_HOSTNAME" >> $GITHUB_ENV
-          echo "TEST_VAR=$TEST_VAR" >> $GITHUB_ENV
-
-          # retrieve these GitHub ENV variables
-          echo "${{ env.MONGODB_ATLAS_HOSTNAME }} on CI"
-          echo "${{ env.TEST_VAR }} on CI"
+        uses: mongodb/atlas-github-action@temp/test-atlas-is-containerized
       - name: Use AtlasCLI
         shell: bash
         run: atlas --version # Print Atlas CLI Version
