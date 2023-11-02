@@ -7,7 +7,6 @@ env:
   MONGODB_ATLAS_PRIVATE_API_KEY: ${{ secrets.PRIVATE_API_KEY }}
   MONGODB_ATLAS_ORG_ID: ${{ secrets.ORG_ID }} # default organisation ID
   MONGODB_ATLAS_PROJECT_ID: ${{ secrets.PROJECT_ID }} # default project ID
-
 jobs:
   setup:
     runs-on: ubuntu-latest
