@@ -23,7 +23,7 @@ jobs:
         with:
           run-setup: true
           project-id: ${{ steps.create-project.outputs.create-project-id }}
-          cluster-name: check-runner-os
+          cluster-name: env-all-real
           username: test-user
           password: test-password
       - name: Retrieve Connection String
@@ -34,4 +34,4 @@ jobs:
         uses: mongodb/atlas-github-action@main
         with:
           delete-project-id: ${{ steps.create-project.outputs.create-project-id }}
-          delete-cluster-name: check-runner-os
+          delete-cluster-name: env-all-real
