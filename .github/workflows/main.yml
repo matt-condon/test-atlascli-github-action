@@ -12,11 +12,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Setup AtlasCLI and create a project
-        id: create-project
+      - name: Install AtlasCLI
+        id: install
         uses: mongodb/atlas-github-action@temp/test-atlas-is-containerized
-        with:
-          create-project-name: test-setup-project
+      - name: Create a Project
+        id: create-project
+        shell: bash
+        run: |
+          projectId=$(atlas project create test-setup-project -o json-path="$.id")
+          echo "create-project-id=$(echo $projectId)" >> $GITHUB_OUTPUT
       - name: Run setup
         id: setup
         uses: mongodb/atlas-github-action@temp/test-atlas-is-containerized
