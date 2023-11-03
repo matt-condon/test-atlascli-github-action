@@ -23,7 +23,7 @@ jobs:
         with:
           run-setup: true
           project-id: ${{ steps.create-project.outputs.create-project-id }}
-          cluster-name: env-all-real
+          cluster-name: set-env
           username: test-user
           password: test-password
       - name: Retrieve Connection String
@@ -31,7 +31,7 @@ jobs:
         run: |
           echo "${{ steps.setup.outputs.connection-string }}"
       - name: Teardown
-        uses: mongodb/atlas-github-action@main
+        uses: mongodb/atlas-github-action@temp/test-atlas-is-containerized
         with:
           delete-project-id: ${{ steps.create-project.outputs.create-project-id }}
-          delete-cluster-name: env-all-real
+          delete-cluster-name: set-env
