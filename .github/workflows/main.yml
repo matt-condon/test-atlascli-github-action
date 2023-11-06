@@ -16,6 +16,8 @@ jobs:
         id: install
         uses: mongodb/atlas-github-action@temp/test-atlas-is-containerized
       - name: Create a Project
+        env:
+          MONGODB_ATLAS_IS_CONTAINERIZED: "true"
         id: create-project
         shell: bash
         run: |
