@@ -29,7 +29,7 @@ jobs:
         with:
           run-setup: true
           project-id: ${{ steps.create-project.outputs.create-project-id }}
-          cluster-name: GH-action-check-os
+          cluster-name: GH-action-run-setup
           username: test-user
           password: test-password
       - name: Retrieve Connection String
@@ -40,4 +40,4 @@ jobs:
         uses: mongodb/atlas-github-action@temp/test-atlas-is-containerized
         with:
           delete-project-id: ${{ steps.create-project.outputs.create-project-id }}
-          delete-cluster-name: GH-action-check-os
+          delete-cluster-name: GH-action-run-setup
