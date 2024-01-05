@@ -38,4 +38,4 @@ jobs:
         uses: mongodb/atlas-github-action@temp/test-atlas-is-containerized
         with:
           delete-project-id: ${{ steps.create-project.outputs.create-project-id }}
-          delete-cluster-name: GH-action-export-all-correct
+          delete-cluster-name: GH-action-export-all-jan
